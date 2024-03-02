@@ -21,9 +21,6 @@
 #define TK_NUM 19       // number
 #define TK_ASSIGN 20    // assignment
 
-#include <iostream>
-using namespace std;
-
 %}
 
 D [0-9]
