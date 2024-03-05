@@ -1,14 +1,14 @@
 %{
 
-#define TK_INCL 1       // include
-#define TK_TYPE 2       // type (int, char, void)
-#define TK_COMP 3       // comparison (==, !=, <=, >=, <, >)
-#define TK_OP 4         // operator (+, -, *, /, %, &)
-#define TK_SEMICOL 5    // semicolon
-#define TK_CURLY_BR 6   // curly bracket
-#define TK_PAREN 7      // parenthesis
-#define TK_COMMA 8      // comma
-#define TK_RETURN 9     // return
+#define TK_INCL 01      // include
+#define TK_TYPE 02      // type (int, char, void)
+#define TK_COMP 03      // comparison (==, !=, <=, >=, <, >)
+#define TK_OP 04        // operator (+, -, *, /, %, &)
+#define TK_SEMICOL 05   // semicolon
+#define TK_CURLY_BR 06  // curly brace
+#define TK_PAREN 07     // parenthesis
+#define TK_COMMA 08     // comma
+#define TK_RETURN 09    // return
 #define TK_LOOP 10      // loop (if, else, while, for, do)
 #define TK_VAR 11       // variable
 #define TK_STRING 12    // string (in single or double quotes)
