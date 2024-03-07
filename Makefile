@@ -7,4 +7,4 @@ lex.yy.c: cmos.l
 	lex cmos.l
 
 clean:
-	rm -f lex.yy.c scanner tokens.txt
+	rm -f lex.yy.c scanner tokens.txt scanner_out.txt a.out
