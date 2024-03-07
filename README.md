@@ -14,7 +14,7 @@
 * read in all tokens from all submissions (2d vector?)
 * for each file:
     * remove spaces from tokens
-    * build k-mers of our length k ( smaller than 50 works, kevin used 10, with 3 digit long tokens, w size 21(?) or maybe he said 21 windows i do not remember)
+    * build k-mers of our length k ( smaller than 50 works, kevin used 10 with token length 3, with 3 digit long tokens, w size 21(?) or maybe he said 21 windows i do not remember)
         * adjust for our token length of 2 or change token length to 3?
 * for each pair of submissions:
     * count the # of shared fingerprints
