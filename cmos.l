@@ -15,13 +15,13 @@
 #define TK_CHAR 13      // char
 #define TK_INCL_PATH 14 // include path
 #define TK_UNKNOWN 15   // unknown
-#define TK_SPACE 16     // space
-#define TK_ANDOR 17     // || and &&
-#define TK_NUM 18       // number
-#define TK_ASSIGN 19    // assignment
+#define TK_ANDOR 16     // || and &&
+#define TK_NUM 17       // number
+#define TK_ASSIGN 18    // assignment
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 %}
 
@@ -33,7 +33,7 @@ LD [a-zA-Z0-9]
 
 \/\/.* { }
 
-\/\*(\n|\t|\s|.)*\*\/ { }
+\/\*([\n\r\f\t]|[^*])*\*\/ { std::cout << "Comment: " << yytext << std::endl;}
 
 \#include { return TK_INCL; }
 
@@ -69,7 +69,7 @@ if|else|while|for|do { return TK_LOOP; }
 
 = { return TK_ASSIGN; }
 
-[ \t\n\f\r] { return TK_SPACE;}
+[ \t\n\f\r] { }
 
 . { return TK_UNKNOWN; }
 
@@ -81,8 +81,9 @@ int yywrap(){
 
 int main(){
     int token;
+    std::ofstream out("scanner_out.txt");
     while((token = yylex())){
-        std::cout << std::setw(2) << std::setfill('0') << token << " ";
+        out << std::setw(2) << std::setfill('0') << token << " ";
     }
     return 0;
 }
