@@ -33,7 +33,7 @@ LD [a-zA-Z0-9]
 
 \/\/.* { }
 
-\/\*([\n\r\f\t]|[^*])*\*\/ { std::cout << "Comment: " << yytext << std::endl;}
+"/*"([^*]|\*+[^*/])*\*+"/" { }
 
 \#include { return TK_INCL; }
 
