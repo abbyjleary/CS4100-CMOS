@@ -7,7 +7,7 @@ lex.yy.c: cmos.l
 	lex cmos.l
 
 cmos: cmos.cpp
-	g++ cmos.cpp -o cmos
+	g++ -g cmos.cpp -o cmos
 
 clean:
 	rm -f lex.yy.c scanner tokens.txt scanner_out.txt a.out

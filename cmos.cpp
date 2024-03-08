@@ -16,21 +16,21 @@ struct match {
     float percentage;
 };
 
-int fingerprint(int start, vector<int> &hashes, int window);
-float calculateMatch(vector<int> v1, vector<int>v2);
+long long fingerprint(int start, vector<long long> &hashes, int window);
+float calculateMatch(vector<long long> v1, vector<long long>v2);
 bool match_greater(match a, match b);
 
 int main()
 {
-    int k = 5; //size of kgram
-    int w = 21; //window size
+    int k = 15; //size of kgram
+    int w = 30; //window size
 
 
     // get tokens from file
     ifstream inStr;
     inStr.open("tokens.txt");
-    vector<vector<int>> hashes;
-    vector<vector<int>> fingerprints;
+    vector<vector<long long> > hashes;
+    vector<vector<long long> > fingerprints;
     stringstream ss;
     string line;
     string name;
@@ -38,22 +38,23 @@ int main()
     string kgram;
     while (getline(inStr, line)) // one line of tokens per file
     {
-        getline(inStr, line);
-        ss << line;
-        ss >> name >> tmp;
-        vector<int> hash;
+        stringstream ss(line);
+        getline(ss, line);
+        stringstream ss2(line);
+        ss2 >> name >> tmp;
+        vector<long long> hash;
         //split into k-grams
         for (int i = 0; i <= (tmp.length() - k); i++){
             kgram = tmp.substr(i, k);
             //hash and store
-            hash.push_back(stoi(kgram));
+            hash.push_back(stoll(kgram));
         }
         hashes.push_back(hash); // push all of this file's hashes to the masterlist
     }
 
     //get fingerprints
     for (int i = 0; i < hashes.size(); i++){ //iterate through each file
-        vector<int> fileFingerprints;
+        vector<long long> fileFingerprints;
         for (int j = 0; j <= (hashes[i].size() - w); j++){
             fileFingerprints.push_back( fingerprint(j, hashes[i], w) );
         }
@@ -84,8 +85,8 @@ int main()
     return 0;
 }
 
-int fingerprint(int start, vector<int> &hashes, int window){
-    int min = hashes[start];
+long long fingerprint(int start, vector<long long> &hashes, int window){
+    long long min = hashes[start];
 
     for (int i = start; i < (start + window); i++){
         if (hashes[i] < min){
@@ -96,7 +97,7 @@ int fingerprint(int start, vector<int> &hashes, int window){
     return min;
 }
 
-float calculateMatch(vector<int> v1, vector<int>v2){  // sort arrays first?
+float calculateMatch(vector<long long> v1, vector<long long>v2){  // sort arrays first?
     int similar = 0;
     sort (v1.begin(), v1.end());
     sort (v2.begin(), v2.end());

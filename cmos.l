@@ -83,7 +83,7 @@ int main(){
     int token;
     std::ofstream out("scanner_out.txt");
     while((token = yylex())){
-        out << std::setw(2) << std::setfill('0') << token;
+        out << std::setw(3) << std::setfill('0') << token;
     }
     return 0;
 }
