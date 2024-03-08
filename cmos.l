@@ -1,4 +1,10 @@
 %{
+/*
+* CS 4100
+* CMOS
+* 3/8/2024
+* Abby Leary and Adeline Fitzwater
+*/
 
 #define TK_INCL 1       // include
 #define TK_TYPE 2       // type (int, char, void)
@@ -14,10 +20,9 @@
 #define TK_STRING 12    // string (in single or double quotes)
 #define TK_CHAR 13      // char
 #define TK_INCL_PATH 14 // include path
-#define TK_UNKNOWN 15   // unknown
-#define TK_ANDOR 16     // || and &&
-#define TK_NUM 17       // number
-#define TK_ASSIGN 18    // assignment
+#define TK_ANDOR 15     // || and &&
+#define TK_NUM 16       // number
+#define TK_ASSIGN 17    // assignment
 
 #include <iostream>
 #include <iomanip>
@@ -70,8 +75,6 @@ if|else|while|for|do { return TK_LOOP; }
 = { return TK_ASSIGN; }
 
 [ \t\n\f\r] { }
-
-. { return TK_UNKNOWN; }
 
 %%
 

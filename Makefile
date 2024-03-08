@@ -10,4 +10,4 @@ cmos: cmos.cpp
 	g++ -g cmos.cpp -o cmos
 
 clean:
-	rm -f lex.yy.c scanner tokens.txt scanner_out.txt a.out
+	rm -f lex.yy.c scanner tokens.txt scanner_out.txt cmos

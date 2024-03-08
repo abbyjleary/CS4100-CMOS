@@ -1,3 +1,10 @@
+/*
+* CS 4100
+* CMOS
+* 3/8/2024
+* Abby Leary and Adeline Fitzwater
+*/
+
 #include <fstream>
 #include <cctype>
 #include <vector>
@@ -31,11 +38,7 @@ int main()
     inStr.open("tokens.txt");
     vector<vector<long long> > hashes;
     vector<vector<long long> > fingerprints;
-    stringstream ss;
-    string line;
-    string name;
-    string tmp;
-    string kgram;
+    string line, name, tmp, kgram;
     while (getline(inStr, line)) // one line of tokens per file
     {
         stringstream ss(line);
@@ -79,7 +82,7 @@ int main()
     //print out report 
     cout << "File 1  File 2  Percent Similarity" << endl;
     for (int i = 0; i < comparisons.size(); i++){
-        cout << comparisons[i].file1 << "\t" << comparisons[i].file2 << "\t" << comparisons[i].percentage << "%" << endl;
+        cout << (comparisons[i].file1 + 1) << "\t" << (comparisons[i].file2 + 1) << "\t" << comparisons[i].percentage << "%" << endl;
     }
 
     return 0;
@@ -97,7 +100,7 @@ long long fingerprint(int start, vector<long long> &hashes, int window){
     return min;
 }
 
-float calculateMatch(vector<long long> v1, vector<long long>v2){  // sort arrays first?
+float calculateMatch(vector<long long> v1, vector<long long>v2){
     int similar = 0;
     sort (v1.begin(), v1.end());
     sort (v2.begin(), v2.end());
