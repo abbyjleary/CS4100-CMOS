@@ -1,24 +1,13 @@
-CFLAGS = -Wall -Werror -O2
-CC = gcc
-CXX = g++
+default: scanner cmos
 
-PROGRAM = cmos 
-CCFILES = cmos.cpp
+scanner: lex.yy.c
+	g++ lex.yy.c -o scanner
 
-OFILES = ${CCFILES:.cpp=.o}
+lex.yy.c: cmos.l
+	lex cmos.l
 
-OBJECTS = lex.yy.o ${OFILES}
-
-cmos : ${OBJECTS}
-	${CXX} ${CFLAGS} ${OBJECTS} -o ${PROGRAM}
-
-scanner : lex.yy.o
-	${CXX} ${CFLAGS} lex.yy.o -o scanner
-
-lex.yy.c : scanner.l parser.tab.h ${HFILE}
-	flex ${LFLAGS} scanner.l
-lex.yy.o: lex.yy.c
-	${CC} ${CFLAGS} -Wno-unused-function -g -c lex.yy.c
+cmos: cmos.cpp
+	g++ cmos.cpp -o cmos
 
 clean:
-	rm -f *.o lex.yy.c cmos scanner
+	rm -f lex.yy.c scanner tokens.txt scanner_out.txt a.out
